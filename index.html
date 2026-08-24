@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<title>HR Documentation Compliance Review – Client Pre-Assessment</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#17181b;--muted:#6e747d;--line:#e1e5ea;--accent:#f2c400;--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:980px;margin:0 auto;padding:26px 16px 56px}
+.hero{background:linear-gradient(135deg,#101011,#2a2a2a);color:#fff;border-radius:24px;padding:28px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:var(--accent);right:-100px;top:-120px;opacity:.15}
+.tag{display:inline-block;background:var(--accent);color:#111;font-size:12px;font-weight:850;padding:7px 10px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase}
+h1{font-size:30px;line-height:1.15;margin:14px 0 8px}
+.hero p{margin:0;max-width:760px;color:#d6d6d6;line-height:1.55}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-top:18px}
+.card h2{font-size:19px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label.field{display:block}
+.field span{display:block;font-size:12px;font-weight:750;color:#505660;margin-bottom:6px}
+input,select,textarea{width:100%;border:1px solid #d8dde3;border-radius:12px;padding:12px 13px;font:inherit;background:#fff;outline:none}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:#a89000;box-shadow:0 0 0 3px rgba(242,196,0,.15)}
+.helper{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.45}
+.notice{background:#fff8d9;border:1px solid #ead778;border-radius:14px;padding:13px 14px;font-size:12px;line-height:1.55;color:#514713}
+.package-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 14px}
+.package-pill{border:1px solid var(--line);border-radius:13px;padding:10px 11px;background:#fafafa}
+.package-pill strong{display:block;font-size:12px}
+.package-pill span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.package-pill.active{background:#111;color:#fff;border-color:#111}
+.package-pill.active span{color:#d5d5d5}
+.template-group{border:1px solid var(--line);border-radius:15px;padding:12px;margin-top:10px;background:#fbfbfc}
+.group-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}
+.group-head strong{font-size:13px}
+.group-head small{font-size:10px;color:var(--muted);font-weight:700}
+.template-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.template-item{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:9px 10px;background:white;cursor:pointer;font-size:12px;line-height:1.35}
+.template-item input{width:17px;height:17px;min-width:17px;margin:1px 0 0;padding:0;accent-color:#111}
+.template-item.checked{background:#fff9d9;border-color:#d8c048}
+.tier-note{display:block;margin-top:3px;font-size:9px;color:#8b8f96;font-weight:750;letter-spacing:.02em}
+.counter{background:#111;color:white;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:850}
+.template-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:800;cursor:pointer}
+.ghost{background:white;border:1px solid var(--line);color:#222}
+.primary{background:var(--accent);color:#111}
+.dark{background:#111;color:white}
+.success{display:none;background:#111;color:white;border-radius:18px;padding:20px;margin-top:18px}
+.success.show{display:block}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sum{background:#1d1d1f;border-radius:12px;padding:11px}
+.sum span{display:block;font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:.04em}
+.sum strong{display:block;margin-top:4px;font-size:14px}
+.selected-list{margin-top:12px;background:#1d1d1f;border-radius:12px;padding:12px}
+.selected-list ul{margin:8px 0 0;padding-left:18px}
+.selected-list li{margin:5px 0;color:#ddd;font-size:12px}
+.footer{text-align:center;color:#8d929a;font-size:11px;margin-top:18px}
+@media(max-width:760px){.grid,.template-list,.summary-grid,.package-strip{grid-template-columns:1fr}h1{font-size:25px}}
+@media print{body{background:white}.no-print{display:none!important}.success{display:block}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <span class="tag">Borneo Business Hub PLT</span>
+    <h1>HR Documentation Compliance Review</h1>
+    <p>Client Pre-Assessment Form. Please provide your company details and select the HR documents you would like our trainer to review. Our team will assess the scope and prepare a customised quotation.</p>
+  </section>
+
+  <form id="clientForm">
+    <section class="card">
+      <h2>1. Company Information</h2>
+      <div class="grid">
+        <label class="field"><span>Company Name *</span><input id="companyName" required></label>
+        <label class="field"><span>Company Registration No.</span><input id="regNo"></label>
+        <label class="field"><span>Industry / Business Nature</span><input id="industry" placeholder="e.g. Manufacturing, Trading, Services"></label>
+        <label class="field"><span>Total Employees *</span><input id="employees" type="number" min="1" required></label>
+        <label class="field"><span>City / State *</span><input id="location" required placeholder="e.g. Sibu, Sarawak"></label>
+        <label class="field"><span>Preferred Review Mode</span>
+          <select id="mode">
+            <option>On-site</option>
+            <option>Online</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Contact Person</h2>
+      <div class="grid">
+        <label class="field"><span>Name *</span><input id="contactName" required></label>
+        <label class="field"><span>Designation *</span><input id="designation" required placeholder="e.g. HR Manager"></label>
+        <label class="field"><span>WhatsApp / Mobile *</span><input id="phone" required></label>
+        <label class="field"><span>Email *</span><input id="email" type="email" required></label>
+        <label class="field"><span>Estimated HR / Management Participants</span><input id="participants" type="number" min="1" value="3"></label>
+        <label class="field"><span>Preferred Month / Date</span><input id="preferredDate" placeholder="e.g. September 2026"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. HR Documents to Review</h2>
+      <div class="notice">
+        We have pre-selected 5 core HR documents under the Essential scope. You may add more documents based on your company's needs. Pricing is not shown here; our team will prepare a customised quotation after reviewing your scope.
+      </div>
+
+      <div class="package-strip">
+        <div class="package-pill active" id="pkgEssential"><strong>Essential</strong><span>Up to 5 documents</span></div>
+        <div class="package-pill" id="pkgSME"><strong>SME Compliance</strong><span>Up to 10 documents</span></div>
+        <div class="package-pill" id="pkgAdvanced"><strong>Advanced Compliance</strong><span>Up to 21 documents</span></div>
+      </div>
+
+      <div class="template-group">
+        <div class="group-head">
+          <strong>Essential Package</strong>
+          <small>5 core documents · pre-selected</small>
+        </div>
+        <div class="template-list">
+          <label class="template-item">
+      <input type="checkbox" class="template-check" value="HUMAN RESOURCES POLICY TEMPLATE" checked>
+      <span>HUMAN RESOURCES POLICY TEMPLATE<small class="tier-note">Essential</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="EMPLOYMENT (LABOR) CONTRACT" checked>
+      <span>EMPLOYMENT (LABOR) CONTRACT<small class="tier-note">Essential</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="OFFER LETTER" checked>
+      <span>OFFER LETTER<small class="tier-note">Essential</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="EMPLOYEE HANDBOOK" checked>
+      <span>EMPLOYEE HANDBOOK<small class="tier-note">Essential</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="DISCIPLINARY PROCEDURE (SOP)" checked>
+      <span>DISCIPLINARY PROCEDURE (SOP)<small class="tier-note">Essential</small></span>
+    </label>
+        </div>
+      </div>
+
+      <div class="template-group">
+        <div class="group-head">
+          <strong>SME Compliance</strong>
+          <small>Select up to 5 additional documents</small>
+        </div>
+        <div class="template-list">
+          <label class="template-item">
+      <input type="checkbox" class="template-check" value="PART-TIME EMPLOYEE CONTRACT">
+      <span>PART-TIME EMPLOYEE CONTRACT<small class="tier-note">SME Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="NON-DISCLOSURE AGREEMENT TEMPLATE">
+      <span>NON-DISCLOSURE AGREEMENT TEMPLATE<small class="tier-note">SME Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="PERFORMANCE IMPROVEMENT PLAN (PIP) FORM">
+      <span>PERFORMANCE IMPROVEMENT PLAN (PIP) FORM<small class="tier-note">SME Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="SHOW CAUSE LETTER (FOR UNAUTHORIZED ABSENCE)">
+      <span>SHOW CAUSE LETTER (FOR UNAUTHORIZED ABSENCE)<small class="tier-note">SME Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="DOMESTIC INQUIRY NOTICE">
+      <span>DOMESTIC INQUIRY NOTICE<small class="tier-note">SME Compliance</small></span>
+    </label>
+        </div>
+      </div>
+
+      <div class="template-group">
+        <div class="group-head">
+          <strong>Advanced Compliance</strong>
+          <small>For broader review scope · up to 21 total</small>
+        </div>
+        <div class="template-list">
+          <label class="template-item">
+      <input type="checkbox" class="template-check" value="SERVICE AGREEMENT">
+      <span>SERVICE AGREEMENT<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="UNAUTHORIZED ABSENCE">
+      <span>UNAUTHORIZED ABSENCE<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="LATE ARRIVAL / EARLY DEPARTURE WARNING LETTER">
+      <span>LATE ARRIVAL / EARLY DEPARTURE WARNING LETTER<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="EMPLOYEE COACHING / COUNSELING FORM">
+      <span>EMPLOYEE COACHING / COUNSELING FORM<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="FINAL WARNING (EXPLANATION NOT SATISFACTORY)">
+      <span>FINAL WARNING (EXPLANATION NOT SATISFACTORY)<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="FINAL WARNING (POOR PERFORMANCE &amp; ATTITUDE)">
+      <span>FINAL WARNING (POOR PERFORMANCE &amp; ATTITUDE)<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="ATTENDANCE MEMO">
+      <span>ATTENDANCE MEMO<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="ATTENDANCE RECORD MEMORANDUM">
+      <span>ATTENDANCE RECORD MEMORANDUM<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="ACKNOWLEDGEMENT OF SATISFACTORY EXPLANATION">
+      <span>ACKNOWLEDGEMENT OF SATISFACTORY EXPLANATION<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="SHOW CAUSE LETTER (POOR SERVICE ATTITUDE)">
+      <span>SHOW CAUSE LETTER (POOR SERVICE ATTITUDE)<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+<label class="template-item">
+      <input type="checkbox" class="template-check" value="SUSPENSION NOTICE">
+      <span>SUSPENSION NOTICE<small class="tier-note">Advanced Compliance</small></span>
+    </label>
+        </div>
+      </div>
+
+      <div class="template-toolbar">
+        <span class="counter" id="counter">5 / 21 selected</span>
+        <div class="actions no-print" style="margin-top:0">
+          <button type="button" class="ghost" id="resetEssential">Reset to Essential 5</button>
+          <button type="button" class="ghost" id="selectAll">Select All 21</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Additional Information</h2>
+      <label class="field"><span>Other HR documents not listed above</span><textarea id="otherDocs" placeholder="Please list any other documents, policies or forms you want reviewed."></textarea></label>
+      <label class="field" style="margin-top:12px"><span>Main HR concerns / issues you want to address</span><textarea id="concerns" placeholder="e.g. outdated employment contracts, misconduct handling, PIP, termination procedure, employee handbook..."></textarea></label>
+      <label class="field" style="margin-top:12px"><span>Any specific employee case or situation to discuss?</span><textarea id="cases" placeholder="Please describe generally. Avoid entering highly sensitive personal information here."></textarea></label>
+      <div class="actions no-print">
+        <button type="submit" class="primary">Submit Pre-Assessment</button>
+        <button type="button" class="ghost" id="resetBtn">Reset Form</button>
+      </div>
+    </section>
+  </form>
+
+  <section class="success" id="success">
+    <h2 style="margin:0">Thank you. Your pre-assessment is ready.</h2>
+    <p style="color:#c9c9c9;font-size:13px;line-height:1.55">Our team will review the scope and prepare a customised quotation. No pricing is displayed in this customer form.</p>
+    <div class="summary-grid">
+      <div class="sum"><span>Company</span><strong id="sCompany">—</strong></div>
+      <div class="sum"><span>Employees</span><strong id="sEmployees">—</strong></div>
+      <div class="sum"><span>Contact</span><strong id="sContact">—</strong></div>
+      <div class="sum"><span>Documents Selected</span><strong id="sDocs">5</strong></div>
+      <div class="sum"><span>Review Scope</span><strong id="sPackage">Essential</strong></div>
+      <div class="sum"><span>Location</span><strong id="sLocation">—</strong></div>
+    </div>
+    <div class="selected-list">
+      <strong>Selected HR Documents</strong>
+      <ul id="selectedDocsList"></ul>
+    </div>
+    <div class="actions no-print">
+      <button class="primary" id="downloadBtn" type="button">Download Submission File</button>
+      <button class="dark" id="copyBtn" type="button">Copy Submission Summary</button>
+      <button class="ghost" id="printBtn" type="button">Print / Save PDF</button>
+    </div>
+  </section>
+
+  <div class="footer">Client Pre-Assessment • Borneo Business Hub PLT</div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const checks = () => [...document.querySelectorAll(".template-check")];
+const essentialTitles = ["HUMAN RESOURCES POLICY TEMPLATE", "EMPLOYMENT (LABOR) CONTRACT", "OFFER LETTER", "EMPLOYEE HANDBOOK", "DISCIPLINARY PROCEDURE (SOP)"];
+const initialSet = new Set(essentialTitles);
+
+function packageName(n){
+  if(n <= 5) return "Essential";
+  if(n <= 10) return "SME Compliance";
+  return "Advanced Compliance";
+}
+
+function syncChecks(){
+  const selected = checks().filter(c=>c.checked);
+  const n = selected.length;
+  $("counter").textContent = n + " / 21 selected";
+  checks().forEach(c=>c.closest(".template-item").classList.toggle("checked", c.checked));
+  $("pkgEssential").classList.toggle("active", n <= 5);
+  $("pkgSME").classList.toggle("active", n > 5 && n <= 10);
+  $("pkgAdvanced").classList.toggle("active", n > 10);
+}
+
+checks().forEach(c=>c.addEventListener("change", syncChecks));
+
+$("resetEssential").addEventListener("click",()=>{
+  checks().forEach(c=>c.checked=initialSet.has(c.value));
+  syncChecks();
+});
+
+$("selectAll").addEventListener("click",()=>{
+  checks().forEach(c=>c.checked=true);
+  syncChecks();
+});
+
+function collect(){
+  const selectedTemplates = checks().filter(c=>c.checked).map(c=>c.value);
+  return {
+    formType: "BBH HR Compliance Client Pre-Assessment",
+    version: 2,
+    submittedAt: new Date().toISOString(),
+    companyName: $("companyName").value.trim(),
+    registrationNo: $("regNo").value.trim(),
+    industry: $("industry").value.trim(),
+    employees: Number($("employees").value || 0),
+    location: $("location").value.trim(),
+    reviewMode: $("mode").value,
+    contactName: $("contactName").value.trim(),
+    designation: $("designation").value.trim(),
+    phone: $("phone").value.trim(),
+    email: $("email").value.trim(),
+    participants: Number($("participants").value || 0),
+    preferredDate: $("preferredDate").value.trim(),
+    selectedTemplates,
+    documentCount: selectedTemplates.length,
+    packageScope: packageName(selectedTemplates.length),
+    otherDocuments: $("otherDocs").value.trim(),
+    concerns: $("concerns").value.trim(),
+    cases: $("cases").value.trim()
+  };
+}
+
+function renderSummary(data){
+  $("sCompany").textContent = data.companyName || "—";
+  $("sEmployees").textContent = data.employees || "—";
+  $("sContact").textContent = (data.contactName || "—") + (data.designation ? " · " + data.designation : "");
+  $("sDocs").textContent = data.documentCount;
+  $("sPackage").textContent = data.packageScope;
+  $("sLocation").textContent = data.location || "—";
+  $("selectedDocsList").innerHTML = data.selectedTemplates.length
+    ? data.selectedTemplates.map(x=>"<li>"+x.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")+"</li>").join("")
+    : "<li>None selected</li>";
+  $("success").classList.add("show");
+  $("success").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+$("clientForm").addEventListener("submit",(e)=>{e.preventDefault();renderSummary(collect());});
+
+$("downloadBtn").addEventListener("click",()=>{
+  const data = collect();
+  const safe = (data.companyName || "client").replace(/[^a-z0-9]+/gi,"_").replace(/^_+|_+$/g,"");
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "BBH_HR_PreAssessment_" + safe + ".json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+$("copyBtn").addEventListener("click",async()=>{
+  const d = collect();
+  const text = [
+    "BBH HR Documentation Compliance Review – Client Pre-Assessment",
+    "",
+    "Company: " + d.companyName,
+    "Registration No.: " + (d.registrationNo || "—"),
+    "Industry: " + (d.industry || "—"),
+    "Employees: " + d.employees,
+    "Location: " + d.location,
+    "Review Mode: " + d.reviewMode,
+    "Contact: " + d.contactName + " (" + d.designation + ")",
+    "Phone: " + d.phone,
+    "Email: " + d.email,
+    "Participants: " + d.participants,
+    "Preferred Date: " + (d.preferredDate || "—"),
+    "Review Scope: " + d.packageScope,
+    "",
+    "Selected HR Documents (" + d.documentCount + "):",
+    ...d.selectedTemplates.map(x=>"- "+x),
+    "",
+    "Other Documents: " + (d.otherDocuments || "—"),
+    "Main Concerns: " + (d.concerns || "—"),
+    "Specific Cases: " + (d.cases || "—")
+  ].join("\n");
+  try{await navigator.clipboard.writeText(text);$("copyBtn").textContent="Copied!";setTimeout(()=>$("copyBtn").textContent="Copy Submission Summary",1200);}
+  catch(e){alert("Copy failed. Please use Print / Save PDF instead.");}
+});
+
+$("printBtn").addEventListener("click",()=>window.print());
+
+$("resetBtn").addEventListener("click",()=>{
+  $("clientForm").reset();
+  checks().forEach(c=>c.checked=initialSet.has(c.value));
+  syncChecks();
+  $("success").classList.remove("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+syncChecks();
+</script>
+</body>
+</html>
