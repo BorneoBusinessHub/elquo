@@ -76,17 +76,9 @@ button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:80
       <h2>1. Company Information</h2>
       <div class="grid">
         <label class="field"><span>Company Name *</span><input id="companyName" required></label>
-        <label class="field"><span>Company Registration No.</span><input id="regNo"></label>
         <label class="field"><span>Industry / Business Nature</span><input id="industry" placeholder="e.g. Manufacturing, Trading, Services"></label>
         <label class="field"><span>Total Employees *</span><input id="employees" type="number" min="1" required></label>
         <label class="field"><span>City / State *</span><input id="location" required placeholder="e.g. Sibu, Sarawak"></label>
-        <label class="field"><span>Preferred Review Mode</span>
-          <select id="mode">
-            <option>On-site</option>
-            <option>Online</option>
-            <option>Not sure yet</option>
-          </select>
-        </label>
       </div>
     </section>
 
@@ -312,11 +304,9 @@ function collect(){
     version: 2,
     submittedAt: new Date().toISOString(),
     companyName: $("companyName").value.trim(),
-    registrationNo: $("regNo").value.trim(),
     industry: $("industry").value.trim(),
     employees: Number($("employees").value || 0),
     location: $("location").value.trim(),
-    reviewMode: $("mode").value,
     contactName: $("contactName").value.trim(),
     designation: $("designation").value.trim(),
     phone: $("phone").value.trim(),
@@ -365,11 +355,9 @@ $("copyBtn").addEventListener("click",async()=>{
     "BBH HR Documentation Compliance Review – Client Pre-Assessment",
     "",
     "Company: " + d.companyName,
-    "Registration No.: " + (d.registrationNo || "—"),
     "Industry: " + (d.industry || "—"),
     "Employees: " + d.employees,
     "Location: " + d.location,
-    "Review Mode: " + d.reviewMode,
     "Contact: " + d.contactName + " (" + d.designation + ")",
     "Phone: " + d.phone,
     "Email: " + d.email,
