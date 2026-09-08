@@ -239,25 +239,8 @@ button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:80
   </form>
 
   <section class="success" id="success">
-    <h2 style="margin:0">Thank you. Your pre-assessment is ready.</h2>
-    <p style="color:#c9c9c9;font-size:13px;line-height:1.55">Our team will review the scope and prepare a customised quotation. No pricing is displayed in this customer form.</p>
-    <div class="summary-grid">
-      <div class="sum"><span>Company</span><strong id="sCompany">—</strong></div>
-      <div class="sum"><span>Employees</span><strong id="sEmployees">—</strong></div>
-      <div class="sum"><span>Contact</span><strong id="sContact">—</strong></div>
-      <div class="sum"><span>Documents Selected</span><strong id="sDocs">5</strong></div>
-      <div class="sum"><span>Review Scope</span><strong id="sPackage">Essential</strong></div>
-      <div class="sum"><span>Location</span><strong id="sLocation">—</strong></div>
-    </div>
-    <div class="selected-list">
-      <strong>Selected HR Documents</strong>
-      <ul id="selectedDocsList"></ul>
-    </div>
-    <div class="actions no-print">
-      <button class="primary" id="downloadBtn" type="button">Download Submission File</button>
-      <button class="dark" id="copyBtn" type="button">Copy Submission Summary</button>
-      <button class="ghost" id="printBtn" type="button">Print / Save PDF</button>
-    </div>
+    <h2 style="margin:0">Thanks for your response.</h2>
+    <p style="color:#c9c9c9;font-size:13px;line-height:1.55">We will contact you with a quotation as soon as possible.</p>
   </section>
 
   <div class="footer">Client Pre-Assessment • Borneo Business Hub PLT</div>
@@ -322,61 +305,39 @@ function collect(){
   };
 }
 
-function renderSummary(data){
-  $("sCompany").textContent = data.companyName || "—";
-  $("sEmployees").textContent = data.employees || "—";
-  $("sContact").textContent = (data.contactName || "—") + (data.designation ? " · " + data.designation : "");
-  $("sDocs").textContent = data.documentCount;
-  $("sPackage").textContent = data.packageScope;
-  $("sLocation").textContent = data.location || "—";
-  $("selectedDocsList").innerHTML = data.selectedTemplates.length
-    ? data.selectedTemplates.map(x=>"<li>"+x.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")+"</li>").join("")
-    : "<li>None selected</li>";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnWdWyBDQe6s5eYGM2W0O4o7UBv4J7VNZqmJqxnxiIdJIupqFLNWO1gQu7rNqj7agY/exec";
+
+function showSuccess(){
+  $("clientForm").style.display = "none";
   $("success").classList.add("show");
   $("success").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-$("clientForm").addEventListener("submit",(e)=>{e.preventDefault();renderSummary(collect());});
-
-$("downloadBtn").addEventListener("click",()=>{
+$("clientForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
   const data = collect();
-  const safe = (data.companyName || "client").replace(/[^a-z0-9]+/gi,"_").replace(/^_+|_+$/g,"");
-  const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "BBH_HR_PreAssessment_" + safe + ".json";
-  a.click();
-  URL.revokeObjectURL(a.href);
+  const submitBtn = document.querySelector('#clientForm button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: JSON.stringify(data)
+    });
+    showSuccess();
+  } catch (error) {
+    alert("Submission failed. Please check your internet connection and try again.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
 });
 
-$("copyBtn").addEventListener("click",async()=>{
-  const d = collect();
-  const text = [
-    "BBH HR Documentation Compliance Review – Client Pre-Assessment",
-    "",
-    "Company: " + d.companyName,
-    "Industry: " + (d.industry || "—"),
-    "Employees: " + d.employees,
-    "Location: " + d.location,
-    "Contact: " + d.contactName + " (" + d.designation + ")",
-    "Phone: " + d.phone,
-    "Email: " + d.email,
-    "Participants: " + d.participants,
-    "Preferred Date: " + (d.preferredDate || "—"),
-    "Review Scope: " + d.packageScope,
-    "",
-    "Selected HR Documents (" + d.documentCount + "):",
-    ...d.selectedTemplates.map(x=>"- "+x),
-    "",
-    "Other Documents: " + (d.otherDocuments || "—"),
-    "Main Concerns: " + (d.concerns || "—"),
-    "Specific Cases: " + (d.cases || "—")
-  ].join("\n");
-  try{await navigator.clipboard.writeText(text);$("copyBtn").textContent="Copied!";setTimeout(()=>$("copyBtn").textContent="Copy Submission Summary",1200);}
-  catch(e){alert("Copy failed. Please use Print / Save PDF instead.");}
-});
 
-$("printBtn").addEventListener("click",()=>window.print());
+
 
 $("resetBtn").addEventListener("click",()=>{
   $("clientForm").reset();
